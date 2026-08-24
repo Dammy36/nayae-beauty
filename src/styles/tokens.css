@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Design tokens - every color, font size, spacing value, etc. used across
+   the site is defined once here as a CSS variable, then referenced
+   everywhere else. Change a value here and it updates the whole site.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand colors (source of truth - do not change without the client) ---- */
+  --color-pink: #eeb8c9; /* primary CTAs, highlights, active states */
+  --color-ink: #111111; /* primary text, headings, dark surfaces */
+  --color-white: #ffffff;
+  --color-blush: #fff7f9; /* soft background sections */
+  --color-text-secondary: #555555;
+  --color-text-on-dark: rgba(255, 255, 255, 0.72); /* secondary text on ink backgrounds */
+
+  /* ---- Supporting shades derived from the brand pink ----
+     Raw --color-pink is a light pastel, so text/icons/focus rings drawn
+     directly on it or on white don't reach the 3:1 contrast ratio
+     accessibility requires. --color-pink-deep is the same hue, darkened,
+     used only where contrast actually matters (link hover, focus rings,
+     the "Book Appointment" CTA text on a light pink fill). */
+  --color-pink-deep: #d98ca6;
+  --color-pink-hairline: #f0dce3; /* faint pink border, e.g. idle card edges */
+
+  /* ---- Status colors (for order/booking badges, introduced later) ---- */
+  --color-success: #3f7a57; /* Paid / Confirmed / Completed */
+  --color-warning: #b98a3d; /* Pending Payment / Pending */
+  --color-danger: #b3434b; /* Cancelled */
+
+  /* ---- Typography ---- */
+  --font-display: "Playfair Display Variable", "Playfair Display", Georgia, serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  --text-display-xl: 3rem; /* 48px - hero headline */
+  --text-display-lg: 2.25rem; /* 36px - page/section titles */
+  --text-display-md: 1.5rem; /* 24px - card group headings */
+  --text-body-lg: 1.125rem; /* 18px - intro paragraphs */
+  --text-body-md: 1rem; /* 16px - default body/UI text */
+  --text-body-sm: 0.875rem; /* 14px - captions, meta */
+  --text-label: 0.75rem; /* 12px - tracked uppercase labels */
+
+  --tracking-label: 0.09em;
+
+  /* ---- Spacing scale (8px rhythm) ---- */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-7: 3rem; /* 48px */
+  --space-8: 4rem; /* 64px */
+  --space-9: 6rem; /* 96px */
+
+  /* ---- Shape ---- */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --shadow-soft: 0 12px 28px -16px rgba(17, 17, 17, 0.16);
+
+  /* ---- Motion ---- */
+  --transition-fast: 150ms ease;
+  --transition-base: 220ms ease;
+
+  /* ---- Layout ---- */
+  --container-width: 1280px;
+}
