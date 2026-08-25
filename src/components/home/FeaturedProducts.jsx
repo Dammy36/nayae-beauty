@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../product/ProductCard.jsx";
 import { useProducts } from "../../hooks/useProducts.js";
+import { useReveal } from "../../hooks/useReveal.js";
 
 // Which products show on the homepage is a presentation choice, not
 // business data, so it's just a slug list here rather than a database
@@ -17,9 +18,10 @@ function FeaturedProducts() {
   const featuredProducts = FEATURED_SLUGS.map((slug) => products.find((p) => p.slug === slug)).filter(
     Boolean
   );
+  const { ref, className } = useReveal();
 
   return (
-    <section className="section">
+    <section ref={ref} className={`section ${className}`.trim()}>
       <div className="container">
         <div className="section-heading">
           <span className="label">Shop The Edit</span>

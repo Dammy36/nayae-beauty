@@ -163,6 +163,10 @@ function ProductDetail() {
           </div>
           {justAdded && (
             <p className="product-detail__added-message" role="status">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M4.5 8.2l2.3 2.3L11.5 5.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
               Added to cart.{" "}
               <Link to="/cart" className="product-detail__added-link">
                 View Cart

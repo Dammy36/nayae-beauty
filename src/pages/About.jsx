@@ -3,6 +3,7 @@ import heroImage from "../assets/about/about-hero.jpg";
 import missionPrimary from "../assets/about/mission-primary.jpg";
 import missionSecondary from "../assets/about/mission-secondary.jpg";
 import { usePageMeta } from "../hooks/usePageMeta.js";
+import { useReveal } from "../hooks/useReveal.js";
 
 // Centered, bold page title (its own plain-background banner) followed
 // by a stacked photo + centered story - inspired by the Bea The Stylist
@@ -13,6 +14,7 @@ function About() {
     "About | Nayaé Beauty",
     "Nayaé Beauty offers a curated selection of makeup essentials alongside professional beauty services, all in one place."
   );
+  const { ref, className } = useReveal();
 
   return (
     <div className="about-page">
@@ -41,7 +43,7 @@ function About() {
         </div>
       </div>
 
-      <section className="mission">
+      <section ref={ref} className={`mission ${className}`.trim()}>
         <div className="container mission__grid">
           <div className="mission__media">
             <img src={missionPrimary} alt="Nayaé Beauty makeup application, close up" />

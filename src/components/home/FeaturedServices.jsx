@@ -1,5 +1,6 @@
 import { useServices } from "../../hooks/useServices.js";
 import ServiceCard from "../service/ServiceCard.jsx";
+import { useReveal } from "../../hooks/useReveal.js";
 
 // The grid layout adapts to how many services actually exist, so a
 // short list (1 or 2 services, our current real scope) doesn't render
@@ -13,9 +14,10 @@ function gridModifierClass(count) {
 
 function FeaturedServices() {
   const { services, isLoading, error } = useServices();
+  const { ref, className } = useReveal();
 
   return (
-    <section className="section section--blush">
+    <section ref={ref} className={`section section--blush ${className}`.trim()}>
       <div className="container">
         <div className="section-heading">
           <span className="label">Book Your Next Look</span>

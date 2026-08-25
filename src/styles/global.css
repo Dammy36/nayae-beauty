@@ -765,10 +765,58 @@ p {
   border-top: 1px solid var(--color-pink-hairline);
 }
 
+/* ==========================================================================
+   Scroll reveal - see src/hooks/useReveal.js. Fades/rises a section in
+   the first time it scrolls into view.
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .product-detail__added-message {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--text-body-sm);
   color: var(--color-success);
+  background-color: var(--color-blush);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
   margin: calc(var(--space-6) * -1) 0 var(--space-6);
+  animation: toast-in 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-detail__added-message {
+    animation: none;
+  }
 }
 
 .product-detail__added-link {

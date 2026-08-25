@@ -3,6 +3,7 @@ import { useServices } from "../hooks/useServices.js";
 import ServiceCard from "../components/service/ServiceCard.jsx";
 import PhotoCarousel from "../components/common/PhotoCarousel.jsx";
 import { usePageMeta } from "../hooks/usePageMeta.js";
+import { useReveal } from "../hooks/useReveal.js";
 import carousel1 from "../assets/services/carousel/carousel-1.jpg";
 import carousel2 from "../assets/services/carousel/carousel-2.jpg";
 import carousel3 from "../assets/services/carousel/carousel-3.jpg";
@@ -38,6 +39,8 @@ function Services() {
   );
 
   const { services, isLoading, error } = useServices();
+  const whyChooseReveal = useReveal();
+  const gridReveal = useReveal();
 
   return (
     <div className="shop-page">
@@ -59,7 +62,7 @@ function Services() {
         </div>
       </section>
 
-      <section className="why-choose-us">
+      <section ref={whyChooseReveal.ref} className={`why-choose-us ${whyChooseReveal.className}`.trim()}>
         <div className="container why-choose-us__grid">
           <div className="why-choose-us__text">
             <span className="label">Why Choose Us</span>
@@ -81,7 +84,7 @@ function Services() {
         </div>
       </section>
 
-      <div className="container">
+      <div ref={gridReveal.ref} className={`container ${gridReveal.className}`.trim()}>
         <div className="section-heading">
           <span className="label">Nayaé Beauty</span>
           <h2>Our Services</h2>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getWhatsAppLink } from "../lib/whatsapp.js";
 import { usePageMeta } from "../hooks/usePageMeta.js";
+import { useReveal } from "../hooks/useReveal.js";
 
 const initialFormData = { name: "", email: "", subject: "", message: "" };
 
@@ -24,6 +25,7 @@ function Contact() {
 
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
+  const mapReveal = useReveal();
 
   function updateField(field, value) {
     setFormData((current) => ({ ...current, [field]: value }));
@@ -154,7 +156,7 @@ function Contact() {
         </form>
       </div>
 
-      <div className="contact-map">
+      <div ref={mapReveal.ref} className={`contact-map ${mapReveal.className}`.trim()}>
         <iframe
           title="Nayaé Beauty location"
           src={MAP_EMBED_SRC}
