@@ -8,6 +8,11 @@
 --
 -- Safe to re-run: every insert uses ON CONFLICT DO NOTHING, so running it
 -- again won't create duplicates.
+--
+-- "Chic Kee Super Hold Lash Glue" and "Becharm Ageless Clown White PRO
+-- Matte" were deliberately removed from the live catalogue by the client
+-- and are intentionally left out of this file too - re-running this
+-- script will not bring them back.
 -- ============================================================================
 
 -- A product can have more than one photo, so this needs its own unique
@@ -49,10 +54,6 @@ insert into products (category_id, name, slug, description, price, stock, status
    'Kiss Beauty Makeup Fix Spray', 'kiss-beauty-fix-spray',
    'A refreshing makeup setting spray for long-lasting hold. Net wt 150ml.', null, 9, 'active'),
 
-  ((select id from categories where slug = 'eyes'),
-   'Chic Kee Super Hold Lash Glue', 'chic-kee-lash-glue',
-   'A super hold lash glue for secure, long-lasting wear.', null, 0, 'active'),
-
   ((select id from categories where slug = 'hair'),
    'Lanell Anti-Fungus Hair Bonding Glue', 'lanell-hair-bonding-glue',
    'An anti-fungal hair bonding glue for a secure, natural-looking hold. 1 fl oz.', null, 15, 'active'),
@@ -60,10 +61,6 @@ insert into products (category_id, name, slug, description, price, stock, status
   ((select id from categories where slug = 'face'),
    'Ben Nye Clown White', 'ben-nye-clown-white',
    'A classic, richly pigmented white face paint.', null, 8, 'active'),
-
-  ((select id from categories where slug = 'eyes'),
-   'Becharm Ageless Clown White PRO Matte', 'becharm-clown-white-pro-matte',
-   'A matte white eyeshadow base and primer for 24-hour wear.', null, 3, 'active'),
 
   ((select id from categories where slug = 'face'),
    'Browmatic Brow Pomade', 'browmatic-brow-pomade',
@@ -117,10 +114,8 @@ join (values
   ('dglow-loose-highlighter', '/products/dglow-loose-highlighter.jpg'),
   ('absolute-lip-gloss', '/products/absolute-lip-gloss.jpg'),
   ('kiss-beauty-fix-spray', '/products/kiss-beauty-fix-spray.jpg'),
-  ('chic-kee-lash-glue', '/products/chic-kee-lash-glue.jpg'),
   ('lanell-hair-bonding-glue', '/products/lanell-hair-bonding-glue.jpg'),
   ('ben-nye-clown-white', '/products/ben-nye-clown-white.jpg'),
-  ('becharm-clown-white-pro-matte', '/products/becharm-ageless-clown-white-pro-matte.jpg'),
   ('browmatic-brow-pomade', '/products/browmatic-brow-pomade.jpg'),
   ('loose-shimmer-pigment', '/products/loose-shimmer-pigment.jpg'),
   ('blossom-makeup-lip-oil', '/products/blossom-makeup-lip-oil.jpg'),

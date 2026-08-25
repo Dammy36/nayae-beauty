@@ -724,8 +724,8 @@ p {
 }
 
 .quantity-stepper button {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background-color: transparent;
@@ -901,6 +901,185 @@ p {
 }
 
 /* ==========================================================================
+   About page - centered, bold page title banner, inspired by the Bea
+   The Stylist about page's centered treatment - followed by a
+   side-by-side intro (story left, photo right, shown in full).
+   ========================================================================== */
+
+.about-title {
+  background-color: var(--color-blush);
+  text-align: center;
+  padding: var(--space-8) var(--space-5) var(--space-7);
+}
+
+.about-title .label {
+  display: block;
+  color: var(--color-pink-deep);
+  margin-bottom: var(--space-2);
+}
+
+.about-title h1 {
+  margin: 0;
+}
+
+.about-page__intro {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-8) var(--space-5);
+}
+
+.about-page__intro-text p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.about-page__intro-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 900px) {
+  .about-page__intro {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   Contact page - info + form side by side, map below. Same composition
+   as the Bea The Stylist contact page, our own copy/styling.
+   ========================================================================== */
+
+.contact-grid {
+  display: grid;
+  gap: var(--space-7);
+  padding: var(--space-8) var(--space-5);
+}
+
+.contact-grid__info {
+  max-width: 480px;
+}
+
+.contact-grid__info p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.contact-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact-info-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.contact-info-list a {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.contact-info-list a:hover {
+  color: var(--color-pink-deep);
+}
+
+.contact-info-list__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background-color: var(--color-blush);
+  color: var(--color-pink-deep);
+}
+
+.contact-form {
+  margin: 0;
+}
+
+.contact-map {
+  width: 100%;
+  height: 400px;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.mission {
+  background: var(--color-blush);
+  padding: var(--space-8) 0;
+}
+
+.mission__grid {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  padding: 0 var(--space-5);
+}
+
+.mission__media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.mission__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.mission__media img:last-child {
+  margin-top: var(--space-7);
+}
+
+.mission__text .label {
+  display: block;
+  color: var(--color-pink-deep);
+  margin-bottom: var(--space-3);
+}
+
+.mission__text h2 {
+  margin-bottom: var(--space-4);
+}
+
+.mission__text p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+@media (min-width: 900px) {
+  .mission__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    padding: 0 var(--space-6);
+  }
+}
+
+/* ==========================================================================
    Shade selector (variant picker for products with shades/colors)
    ========================================================================== */
 
@@ -923,6 +1102,10 @@ p {
 }
 
 .shade-pill {
+  /* min-height (not just padding) guarantees a >=44px tap target even
+     for a single-line label, matching the 44x44pt minimum touch target
+     guideline - padding alone measured ~35px tall. */
+  min-height: 44px;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-pink-hairline);
@@ -1001,6 +1184,7 @@ p {
 }
 
 .shop-categories__pill {
+  min-height: 44px;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-pink-hairline);
@@ -1082,42 +1266,65 @@ p {
 }
 
 .service-card {
-  display: block;
-  text-align: center;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  text-align: left;
   text-decoration: none;
-  color: var(--color-ink);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-pink-hairline);
+  color: var(--color-white);
   border-radius: var(--radius-md);
   padding: var(--space-6) var(--space-5);
-  transition: transform var(--transition-base), border-color var(--transition-base),
-    box-shadow var(--transition-base);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .service-card:hover {
-  border-color: var(--color-pink);
   box-shadow: var(--shadow-soft);
   transform: translateY(-3px);
+}
+
+.service-card__background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.service-card__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.05) 0%, rgba(17, 17, 17, 0.15) 45%, rgba(17, 17, 17, 0.85) 100%);
 }
 
 .service-card__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background-color: var(--color-blush);
+  background-color: var(--color-white);
   color: var(--color-pink-deep);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .service-card__name {
+  color: var(--color-white);
   margin: 0 0 var(--space-2);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .service-card__description {
-  color: var(--color-text-secondary);
+  color: var(--color-text-on-dark);
   font-size: var(--text-body-sm);
   margin: 0 0 var(--space-4);
 }
@@ -1125,7 +1332,7 @@ p {
 .service-card__cta {
   font-size: var(--text-body-sm);
   font-weight: 500;
-  color: var(--color-pink-deep);
+  color: var(--color-white);
 }
 
 @media (max-width: 700px) {
@@ -1135,25 +1342,25 @@ p {
 }
 
 /* ==========================================================================
-   About teaser
+   About teaser (homepage) - reuses .about-title's centered banner look;
+   this just adds the heading size match (h2 here, not h1, for correct
+   page outline) and the extra paragraph copy.
    ========================================================================== */
 
 .about-teaser__inner {
   max-width: 640px;
-  text-align: center;
   margin: 0 auto;
 }
 
-.about-teaser__inner .label {
-  display: block;
-  color: var(--color-pink-deep);
-  margin-bottom: var(--space-2);
+.about-teaser h2 {
+  font-size: var(--text-display-xl);
 }
 
-.about-teaser__inner p {
+.about-teaser p {
+  color: var(--color-text-secondary);
   margin-left: auto;
   margin-right: auto;
-  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
 }
 
 /* ==========================================================================
@@ -1963,4 +2170,223 @@ p {
 
 .page {
   padding: var(--space-8) var(--space-5);
+}
+
+/* ==========================================================================
+   Services page hero - full-bleed photo, bottom-left headline. Same
+   pattern as the About page hero.
+   ========================================================================== */
+
+.services-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 65vh;
+  min-height: 65dvh;
+  padding: var(--space-7) var(--space-6);
+  overflow: hidden;
+}
+
+.services-hero__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.services-hero__background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.services-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0) 40%, rgba(17, 17, 17, 0.75) 100%);
+}
+
+.services-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
+
+.services-hero__eyebrow {
+  display: inline-flex;
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+
+.services-hero__content h1 {
+  color: var(--color-white);
+  margin: 0 0 var(--space-3);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+.services-hero__content p {
+  color: var(--color-text-on-dark);
+  margin: 0 0 var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .services-hero {
+    min-height: 55vh;
+    min-height: 55dvh;
+    padding: var(--space-6) var(--space-4);
+  }
+}
+
+/* ==========================================================================
+   Why Choose Us
+   ========================================================================== */
+
+.why-choose-us {
+  background-color: var(--color-blush);
+  padding: var(--space-8) 0;
+}
+
+.why-choose-us__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.why-choose-us__text .label {
+  display: block;
+  color: var(--color-pink-deep);
+  margin-bottom: var(--space-2);
+}
+
+.why-choose-us__text h2 {
+  margin-bottom: var(--space-5);
+}
+
+.why-choose-us__list {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.why-choose-us__list li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--color-pink);
+}
+
+.why-choose-us__item-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.why-choose-us__item-description {
+  color: var(--color-text-secondary);
+  font-size: var(--text-body-sm);
+}
+
+@media (min-width: 900px) {
+  .why-choose-us__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   Photo carousel
+   ========================================================================== */
+
+.photo-carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  aspect-ratio: 4 / 5;
+}
+
+.photo-carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.photo-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.photo-carousel__arrow:hover {
+  background-color: var(--color-white);
+}
+
+.photo-carousel__arrow--prev {
+  left: var(--space-3);
+}
+
+.photo-carousel__arrow--next {
+  right: var(--space-3);
+}
+
+.photo-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.photo-carousel__dot {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.photo-carousel__dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-pink-hairline);
+  transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+.photo-carousel__dot--active::after {
+  background-color: var(--color-pink-deep);
+  transform: scale(1.3);
 }

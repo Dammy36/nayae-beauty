@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ShadeSelector from "../components/product/ShadeSelector.jsx";
+import ProductCard from "../components/product/ProductCard.jsx";
 import { useProducts } from "../hooks/useProducts.js";
 import { useCart } from "../context/CartContext.jsx";
+
+const RELATED_PRODUCTS_COUNT = 4;
+
+// Prefers other products in the same category, then fills any
+// remaining spots with other products so this section still shows
+// something even for a category that only has one or two items.
+function getRelatedProducts(products, currentProduct) {
+  const others = products.filter((item) => item.id !== currentProduct.id);
+  const sameCategory = others.filter((item) => item.category === currentProduct.category);
+  const rest = others.filter((item) => item.category !== currentProduct.category);
+  return [...sameCategory, ...rest].slice(0, RELATED_PRODUCTS_COUNT);
+}
 
 function ProductDetail() {
   const { slug } = useParams();
@@ -51,6 +64,7 @@ function ProductDetail() {
     );
   }
 
+  const relatedProducts = getRelatedProducts(products, product);
   const isOutOfStock = product.stock <= 0;
   // A product with shades can't be added to cart until a shade is chosen -
   // this only blocks the button if every shade happens to be unavailable.
@@ -153,6 +167,23 @@ function ProductDetail() {
           <p className="product-detail__description">{product.description}</p>
         </div>
       </div>
+
+      {relatedProducts.length > 0 && (
+        <div className="container">
+          <div className="section-divider" aria-hidden="true">
+            <span className="section-divider__ring" />
+          </div>
+          <div className="section-heading">
+            <span className="label">Nayaé Beauty</span>
+            <h2>You May Also Like</h2>
+          </div>
+          <div className="product-grid">
+            {relatedProducts.map((relatedProduct) => (
+              <ProductCard key={relatedProduct.id} product={relatedProduct} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
