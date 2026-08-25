@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useServices } from "../hooks/useServices.js";
 import ServiceCard from "../components/service/ServiceCard.jsx";
 import PhotoCarousel from "../components/common/PhotoCarousel.jsx";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 import carousel1 from "../assets/services/carousel/carousel-1.jpg";
 import carousel2 from "../assets/services/carousel/carousel-2.jpg";
 import carousel3 from "../assets/services/carousel/carousel-3.jpg";
@@ -31,6 +32,11 @@ function gridModifierClass(count) {
 }
 
 function Services() {
+  usePageMeta(
+    "Services | Nayaé Beauty",
+    "Professional makeup services in Canada, from everyday glam to bridal makeup. Book your appointment with Nayaé Beauty today."
+  );
+
   const { services, isLoading, error } = useServices();
 
   return (

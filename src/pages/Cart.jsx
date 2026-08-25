@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 function Cart() {
+  usePageMeta("Cart | Nayaé Beauty", null, { noIndex: true });
+
   const { items, subtotal, updateQuantity, removeFromCart } = useCart();
 
   if (items.length === 0) {

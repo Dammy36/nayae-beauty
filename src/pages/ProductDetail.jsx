@@ -4,6 +4,7 @@ import ShadeSelector from "../components/product/ShadeSelector.jsx";
 import ProductCard from "../components/product/ProductCard.jsx";
 import { useProducts } from "../hooks/useProducts.js";
 import { useCart } from "../context/CartContext.jsx";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 const RELATED_PRODUCTS_COUNT = 4;
 
@@ -23,6 +24,11 @@ function ProductDetail() {
   const product = products.find((item) => item.slug === slug);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+
+  usePageMeta(
+    product ? `${product.name} | Nayaé Beauty` : "Nayaé Beauty",
+    product?.description
+  );
 
   const [selectedShade, setSelectedShade] = useState(null);
   const [quantity, setQuantity] = useState(1);

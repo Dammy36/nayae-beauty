@@ -2,12 +2,18 @@ import { Link } from "react-router-dom";
 import heroImage from "../assets/about/about-hero.jpg";
 import missionPrimary from "../assets/about/mission-primary.jpg";
 import missionSecondary from "../assets/about/mission-secondary.jpg";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 // Centered, bold page title (its own plain-background banner) followed
 // by a stacked photo + centered story - inspired by the Bea The Stylist
 // about page's centered editorial treatment, not copied, with our own
 // pink/black styling and copy.
 function About() {
+  usePageMeta(
+    "About | Nayaé Beauty",
+    "Nayaé Beauty offers a curated selection of makeup essentials alongside professional beauty services, all in one place."
+  );
+
   return (
     <div className="about-page">
       <section className="about-title">

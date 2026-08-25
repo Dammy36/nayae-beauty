@@ -4,7 +4,65 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="/logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nayaé Beauty</title>
+
+    <!--
+      This is a React app with no server-side rendering, so this is the
+      one title/description search engines and link-preview bots (which
+      don't run JavaScript) will always see, no matter which page was
+      shared. Individual pages (Shop, About, ...) additionally set their
+      own <title> and description via JavaScript once loaded - see
+      src/hooks/usePageMeta.js - which covers what Google's own crawler
+      sees (it does run JavaScript) and what shows in the browser tab.
+    -->
+    <title>Nayaé Beauty | Makeup Shop &amp; Beauty Services in Canada</title>
+    <meta
+      name="description"
+      content="Nayaé Beauty offers a curated selection of makeup essentials alongside professional beauty services in Canada. Shop online or book your next appointment."
+    />
+
+    <!-- TODO: replace with the real domain once one is registered (see README "Deploying to Hostinger"). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nayaé Beauty" />
+    <meta property="og:title" content="Nayaé Beauty | Makeup Shop &amp; Beauty Services in Canada" />
+    <meta
+      property="og:description"
+      content="Nayaé Beauty offers a curated selection of makeup essentials alongside professional beauty services in Canada. Shop online or book your next appointment."
+    />
+    <meta property="og:image" content="https://nayaebeauty.example/logo.jpg" />
+    <meta property="og:url" content="https://nayaebeauty.example/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nayaé Beauty | Makeup Shop &amp; Beauty Services in Canada" />
+    <meta
+      name="twitter:description"
+      content="Nayaé Beauty offers a curated selection of makeup essentials alongside professional beauty services in Canada. Shop online or book your next appointment."
+    />
+    <meta name="twitter:image" content="https://nayaebeauty.example/logo.jpg" />
+
+    <!--
+      Structured data: tells Google this is a real local business (name,
+      address, contact info), which helps it show up in Google Maps and
+      the local business panel, not just plain search results. Address/
+      phone/email match what's shown on the Contact page - update both
+      places together if they ever change.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Nayaé Beauty",
+        "image": "https://nayaebeauty.example/logo.jpg",
+        "url": "https://nayaebeauty.example/",
+        "telephone": "+1-437-267-6919",
+        "email": "nayaebeauty@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "York University",
+          "addressLocality": "North York",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

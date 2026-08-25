@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { usePageMeta } from "../../hooks/usePageMeta.js";
 
 function AdminLogin() {
+  usePageMeta("Admin Login | Nayaé Beauty", null, { noIndex: true });
+
   const { user, isAdmin, isLoading, signIn } = useAuth();
   const navigate = useNavigate();
 

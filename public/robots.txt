@@ -1,0 +1,8 @@
+# Lets search engines crawl the whole public site, but keeps the admin
+# area (staff-only, no reason to ever appear in search results) out.
+User-agent: *
+Disallow: /admin
+
+# TODO: replace with the real domain once one is registered (see README
+# "Deploying to Hostinger"), then submit this URL in Google Search Console.
+Sitemap: https://nayaebeauty.example/sitemap.xml

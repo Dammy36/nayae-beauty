@@ -1,8 +1,14 @@
 import { useMemo, useState } from "react";
 import ProductCard from "../components/product/ProductCard.jsx";
 import { useProducts } from "../hooks/useProducts.js";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 function Shop() {
+  usePageMeta(
+    "Shop | Nayaé Beauty",
+    "Browse makeup essentials from Nayaé Beauty - eyes, face, lips, skincare, and tools, curated for every routine and occasion."
+  );
+
   const { products, isLoading, error } = useProducts();
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");

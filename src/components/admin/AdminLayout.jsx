@@ -1,11 +1,17 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { usePageMeta } from "../../hooks/usePageMeta.js";
 
 // Shared shell for every admin page: a sidebar for navigating between
 // admin sections, plus a top bar showing who's logged in. Kept separate
 // from the customer-facing Header/Footer entirely - the admin area is a
 // different tool for a different audience.
 function AdminLayout({ children }) {
+  // One noindex covers every admin page, since they all render through
+  // this shared shell - this is a private tool, not something that
+  // should ever show up in a Google search result.
+  usePageMeta("Admin | Nayaé Beauty", null, { noIndex: true });
+
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 

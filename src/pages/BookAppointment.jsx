@@ -3,6 +3,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import { useServices } from "../hooks/useServices.js";
 import { createBooking } from "../lib/bookings.js";
 import { getWhatsAppLink } from "../lib/whatsapp.js";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 const initialFormData = {
   serviceId: "",
@@ -37,6 +38,11 @@ function buildBookingWhatsAppMessage({ serviceName, date, time, customerName, bo
 }
 
 function BookAppointment() {
+  usePageMeta(
+    "Book Appointment | Nayaé Beauty",
+    "Book your next beauty appointment with Nayaé Beauty. Choose a service, pick a date and time, and confirm on WhatsApp."
+  );
+
   const { services, isLoading: servicesLoading } = useServices();
   const [searchParams] = useSearchParams();
 

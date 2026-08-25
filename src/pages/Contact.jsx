@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getWhatsAppLink } from "../lib/whatsapp.js";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 const initialFormData = { name: "", email: "", subject: "", message: "" };
 
@@ -16,6 +17,11 @@ function buildContactWhatsAppMessage({ name, email, subject, message }) {
 // Message" builds a WhatsApp message from what was typed and opens it,
 // same as every other form on this site (bookings, checkout).
 function Contact() {
+  usePageMeta(
+    "Contact | Nayaé Beauty",
+    "Get in touch with Nayaé Beauty - questions, bookings, or anything else. Find our address, phone, and email here."
+  );
+
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
 

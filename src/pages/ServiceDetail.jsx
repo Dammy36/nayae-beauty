@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getServiceBySlug } from "../lib/services.js";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 function ServiceDetail() {
   const { slug } = useParams();
   const [service, setService] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  usePageMeta(
+    service ? `${service.name} | Nayaé Beauty` : "Nayaé Beauty",
+    service?.description
+  );
 
   useEffect(() => {
     let isCancelled = false;

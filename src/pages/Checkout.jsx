@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
 import { createOrder } from "../lib/orders.js";
 import { getWhatsAppLink } from "../lib/whatsapp.js";
+import { usePageMeta } from "../hooks/usePageMeta.js";
 
 const initialFormData = {
   name: "",
@@ -24,6 +25,8 @@ function buildOrderWhatsAppMessage(order) {
 }
 
 function Checkout() {
+  usePageMeta("Checkout | Nayaé Beauty", null, { noIndex: true });
+
   const { items, subtotal, clearCart } = useCart();
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
