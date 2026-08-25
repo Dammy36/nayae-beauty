@@ -1853,6 +1853,50 @@ p {
 }
 
 /* ==========================================================================
+   Admin filter tabs (e.g. Active/Completed/Cancelled/All on Orders) -
+   same pill styling as the shop's category filter, so completed orders
+   can be tucked out of the default view without deleting anything.
+   ========================================================================== */
+
+.admin-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.admin-filter-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-pink-hairline);
+  background-color: transparent;
+  color: var(--color-ink);
+  font-size: var(--text-body-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.admin-filter-tabs__tab:hover {
+  border-color: var(--color-pink);
+}
+
+.admin-filter-tabs__tab--active {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.admin-filter-tabs__count {
+  font-size: var(--text-body-sm);
+  opacity: 0.65;
+}
+
+/* ==========================================================================
    Admin table (product/order/booking lists)
    ========================================================================== */
 
