@@ -1,0 +1,18 @@
+# Netlify deployment config for this Vite + React app.
+# See README.md "Deploying to Netlify" for the full setup steps.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# This is a client-side-routed React app (react-router-dom): routes like
+# /shop or /admin only exist in JavaScript, not as real files on the
+# server. Without this rule, Netlify would 404 on a direct link or a
+# page refresh for any route except the homepage. This tells Netlify to
+# serve index.html for any path that isn't a real file, and let React
+# Router take over from there - the same job public/.htaccess does for
+# the eventual Hostinger deployment.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
