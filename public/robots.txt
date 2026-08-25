@@ -3,6 +3,6 @@
 User-agent: *
 Disallow: /admin
 
-# TODO: replace with the real domain once one is registered (see README
-# "Deploying to Hostinger"), then submit this URL in Google Search Console.
-Sitemap: https://nayaebeauty.example/sitemap.xml
+# Once this site is live at nayaebeauty.com, submit this URL in Google
+# Search Console.
+Sitemap: https://nayaebeauty.com/sitemap.xml
