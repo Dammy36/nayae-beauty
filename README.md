@@ -87,10 +87,36 @@ when it's introduced.
 
 ## Current status
 
-Phases 1-7 are complete: project setup, design system, homepage, shop
-catalogue (with shade/color variants), product detail pages, cart, and
-checkout with the WhatsApp order handoff. Products, services, and orders
-currently live in local placeholder files (clearly marked `TEMPORARY` in
-each file) rather than Supabase - Phase 8 replaces those with real
-database calls once a Supabase project is connected (see "Supabase setup"
-above).
+The site is feature-complete and connected to a live Supabase project:
+shop with cart/checkout, service booking, a full admin dashboard (product,
+order, and booking management), and the About/Services/Contact pages, all
+backed by real database calls with the WhatsApp order/booking handoff.
+It's ready to deploy - see "Deploying to Hostinger" below.
+
+## Deploying to Hostinger
+
+1. **Build the site**: run `npm run build`. This creates a `dist/` folder
+   containing plain HTML/CSS/JS files - that's the entire website, ready
+   to upload anywhere that serves static files (no Node.js needed on the
+   server).
+2. **Upload**: in Hostinger's hPanel, open **File Manager** (or use FTP),
+   go to `public_html` (or a subfolder if the site lives at a path), and
+   upload *everything inside* `dist/` - not the `dist` folder itself, its
+   contents (`index.html`, `assets/`, `products/`, `logo.jpg`, and the
+   hidden `.htaccess` file). File Manager may hide `.htaccess` by default;
+   enable "Show Hidden Files" to confirm it uploaded, since the site's
+   page links (like `/shop` or `/about`) won't work without it.
+3. **Re-deploying after a change**: repeat steps 1-2. Overwrite the old
+   files with the new `dist/` contents.
+
+A few things worth knowing:
+- The `.htaccess` file (in `public/`, copied into every build) is what
+  makes direct links like `nayaebeauty.com/shop` work. Without it,
+  Hostinger's server would show a 404 for any page except the homepage,
+  since this is a client-side-routed React app.
+- The Supabase URL and key are baked into the build at build time from
+  `.env` - if those ever change, update `.env` and run `npm run build`
+  again before re-uploading.
+- Product photos are served from this app itself (the `public/products/`
+  folder, copied into `dist/products/`) rather than Supabase Storage, so
+  they need to be part of every upload too.

@@ -1,0 +1,18 @@
+# This site is a React "single-page app" - react-router-dom handles pages
+# like /shop or /about entirely in the browser, using JavaScript. Apache
+# (Hostinger's web server) doesn't know that: if someone opens /shop
+# directly, or refreshes the page while on it, Apache looks for a real
+# file/folder called "shop" on the server, doesn't find one, and shows a
+# 404 error instead of loading the site.
+#
+# This rule fixes that: for any request that isn't an existing file or
+# folder, serve index.html instead and let React Router take over from
+# there and show the right page.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
