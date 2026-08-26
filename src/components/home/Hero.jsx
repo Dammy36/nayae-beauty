@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
-import heroImage from "../../assets/hero/hero-satin-rose.jpg";
+import heroImage from "../../assets/hero/hero-flatlay.jpg";
 
-// Full-bleed editorial hero: a decorative background image fills the
-// section edge-to-edge, a soft dark scrim sits on top only so the
-// centered text stays readable, and the copy/CTAs are layered above
-// both. The background is a stylistic graphic (not a real product/
-// portfolio photo), so its alt text is empty - it's decoration, not
-// content the headline/subhead already say everything necessary.
+// Full-bleed editorial hero: the product photo fills the section
+// edge-to-edge, a soft dark scrim sits on top only so the centered text
+// stays readable, and the copy/CTAs are layered above both.
 //
 // PLACEHOLDER COPY: the subhead below has not been supplied by the
 // client yet - it's a temporary description, not a confirmed business
@@ -15,7 +12,7 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero__background">
-        <img src={heroImage} alt="" />
+        <img src={heroImage} alt="A curated flat lay of Nayaé Beauty makeup products" />
         <div className="hero__overlay" aria-hidden="true" />
       </div>
 
