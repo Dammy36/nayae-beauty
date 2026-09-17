@@ -82,6 +82,12 @@ function Shop() {
 
             {filteredProducts.length > 0 ? (
               <div className="product-grid">
+                {/* Visually hidden - keeps the heading order H1 -> H2 -> H3
+                    (product names) correct for screen readers and SEO,
+                    without changing how the page looks. */}
+                <h2 className="sr-only">
+                  {activeCategory === "All" ? "All Products" : `${activeCategory} Products`}
+                </h2>
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
